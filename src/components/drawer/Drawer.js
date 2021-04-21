@@ -4,6 +4,8 @@ import Name from "../Name/Name"
 import Dash from "../drawer/Dashboard"
 
 import SimpleDialogDemo from "../form/Form"
+
+import EnhancedTable from "../Table/Table"
 // function Drawer(){
 
 //     return(
@@ -196,6 +198,12 @@ const useStyles = makeStyles((theme) => ({
                     <div>
                         <SimpleDialogDemo />
                     </div>
+                    <br />
+                    <div>
+                        <EnhancedTable />
+                    </div>
+                    <br />
+                    <br />
                 </div>
                 
                 
