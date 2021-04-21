@@ -1,0 +1,10 @@
+.r-l{
+    float: right !important;
+    text-align: right !important;
+    /* align-items: flex-end; */
+    display: flex;
+    color: red;
+    font-size: 15px !important;
+    border: 1px solid white;
+    margin-left: 900px;
+}

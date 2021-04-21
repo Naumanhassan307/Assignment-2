@@ -17,3 +17,7 @@ body{
     font-weight: 100 !important;
     letter-spacing: 0.01071em !important;
 }
+.chan-main{
+    border: 3px solid #354391e5 !important;
+    border-radius: 10px;
+}
