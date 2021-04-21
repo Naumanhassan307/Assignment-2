@@ -1,5 +1,7 @@
 
-
+import "./Drawer.css"
+import Name from "../Name/Name"
+import Dash from "../drawer/Dashboard"
 // function Drawer(){
 
 //     return(
@@ -28,6 +30,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Role from "./roles";
+import User from "./User";
+import Per from "./permissino";
+import News from "./news";
+import Page from "./pages";
+import Adv from "./advance";
+import Logout from "./logout";
 
 const drawerWidth = 240;
 
@@ -75,31 +84,52 @@ const useStyles = makeStyles((theme) => ({
     };
 
     const drawer = (
-        <div>
-        <div className={classes.toolbar} />
-        <Divider />
+        <>
+        <Name />
+        <div className="ld">
+            
+            <div className={classes.toolbar} />
+            <Divider />
+                <List>
+                <h3 className="tag">Administration</h3>
+                    {["Dashboard", "Users", "Roles", "Permissions","News", "pages", "Advanced"].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                            {index  === 0 ? <Dash /> : index === 1 ? <User /> : index === 2 ? <Role /> : index === 3? <Per /> : index === 4 ? <News />
+                            : index === 5 ? <Page /> :  <Adv />
+                            }
+                            
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            {/* <Divider />
+                        
+                <List>
+                    {["News", "pages", "Menu", "Advanced"].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List> */}
+            <Divider />
             <List>
-                {["Dashboard", "Users", "Roles", "Permissions"].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
+                        <h3 className="tag">USER</h3>
+                {[ "Logout"].map((text,) => (
+                <ListItem button key={text}>
+                    <ListItemIcon>
+                    <Logout />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                </ListItem>
                 ))}
             </List>
-        <Divider />
-        <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-                <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-            </ListItem>
-            ))}
-        </List>
         </div>
+        </>
     );
 
     const container =

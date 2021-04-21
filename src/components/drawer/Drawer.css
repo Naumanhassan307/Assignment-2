@@ -1,0 +1,19 @@
+.ld{
+    background-color: rgba(0, 0, 0, 0.952) !important;
+    color: cornsilk;
+}
+.MuiTypography-body1{
+    line-height: 1.35 !important;
+}
+.tag{
+    padding-left: 20px !important;
+}
+.makeStyles-toolbar-5{
+    line-height: 0 !important;
+}
+body{
+    font-size: 0.8rem !important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 100 !important;
+    letter-spacing: 0.01071em !important;
+}

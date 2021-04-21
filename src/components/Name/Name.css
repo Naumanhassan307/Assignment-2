@@ -1,0 +1,12 @@
+.name-div{
+    background-color: #2b3b91 !important;
+    color: cornsilk !important;
+    /* position: sticky !important; 
+    align-items: center; 
+    height: 400px !important; */
+
+    /* display: flex !important;
+    position: relative !important; */
+    font-size: 19px !important;
+    text-align: center;
+}
