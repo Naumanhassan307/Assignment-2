@@ -3,17 +3,11 @@ import "./Drawer.css"
 import Name from "../Name/Name"
 import Dash from "../drawer/Dashboard"
 
-import SimpleDialogDemo from "../form/Form"
 
-import EnhancedTable from "../Table/Table"
-// function Drawer(){
+import CustomizedTables from "../Table/Table";
+import {useState} from "react"
+import AlertDialog from "../Form/inputButton"
 
-//     return(
-//         <>
-//         </>
-//     )
-// }
-// export default Drawer;
 
 
 import React from "react";
@@ -79,6 +73,14 @@ const useStyles = makeStyles((theme) => ({
     }));
 
     function ResponsiveDrawer(props) {
+
+
+
+        const [user, setUser] = useState([])
+
+
+
+
     const { window } = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -109,18 +111,7 @@ const useStyles = makeStyles((theme) => ({
                         </ListItem>
                     ))}
                 </List>
-            {/* <Divider />
-                        
-                <List>
-                    {["News", "pages", "Menu", "Advanced"].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List> */}
+                            
             <Divider />
             <List>
                         <h3 className="tag">USER</h3>
@@ -196,12 +187,12 @@ const useStyles = makeStyles((theme) => ({
                 <div className={classes.toolbar} />
                 <div className="chan-main">
                     <div>
-                        <SimpleDialogDemo />
-                    </div>
+                        <AlertDialog setUser={setUser} user={user}/>
                     <br />
-                    <div>
-                        <EnhancedTable />
+                    <br />
+                        <CustomizedTables user={user}/>
                     </div>
+                    
                     <br />
                     <br />
                 </div>

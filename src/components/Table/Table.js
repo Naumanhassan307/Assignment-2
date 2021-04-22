@@ -1,3 +1,6 @@
+
+
+
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -7,6 +10,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+
+
+import Button from "@material-ui/core/Button";
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -26,32 +33,14 @@ const StyledTableCell = withStyles((theme) => ({
     },
     }))(TableRow);
 
-
-
-
-    function createData(name, userId, roles, email) {
-    return { name, userId, roles, email};
-    }
-
-    const rows = [
-        // createData("Ali Hassan", 159, 6.0, "naumanhassan@gmail.com"),
-        // createData("Nauman Hassan", 237, 9.0, "naumanhassan@gmail.com"),
-        // createData("Mukaram Shahzad", 262, 16.0, "naumanhassan@gmail.com"),
-        // createData("Shahid Ali ", 305, 3.7, "naumanhassan@gmail.com"),
-        // createData("Choro is ko", 356, 16.0, "naumanhassan@gmail.com"),
-    ];
-
+    
     const useStyles = makeStyles({
     table: {
         minWidth: 700,
     },
     });
 
-
-
-    
-
-    export default function CustomizedTables() {
+    export default function CustomizedTables({user}) {
     const classes = useStyles();
 
     return (
@@ -60,25 +49,31 @@ const StyledTableCell = withStyles((theme) => ({
             <TableHead>
             <TableRow>
                 <StyledTableCell>User Name</StyledTableCell>
-                <StyledTableCell align="right">User Id</StyledTableCell>
-                <StyledTableCell align="right">Roles</StyledTableCell>
+                <StyledTableCell align="left">User ID</StyledTableCell>
+                <StyledTableCell align="left">User Role</StyledTableCell>
                 <StyledTableCell align="center">User E-mail</StyledTableCell>
+                <StyledTableCell align="center">Actions</StyledTableCell>
+
             </TableRow>
             </TableHead>
             <TableBody>
-            {rows.map((row) => (
-                <StyledTableRow key={row.name}>
+            {user.map((item) => (
+                <StyledTableRow key={item.uName}>
                 <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {item.uName}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.userId}</StyledTableCell>
-                <StyledTableCell align="right">{row.roles}</StyledTableCell>
-                <StyledTableCell align="center">{row.email}</StyledTableCell>
+                <StyledTableCell align="left">{item.uId}</StyledTableCell>
+                <StyledTableCell align="left">{item.uRole}</StyledTableCell>
+                <StyledTableCell align="center">{item.uMail}</StyledTableCell>
+                <StyledTableCell align="center">
+                    <Button variant="contained">Update</Button> &nbsp;
+                    <Button variant="contained">Delete</Button>
+                </StyledTableCell>
+                
                 </StyledTableRow>
             ))}
             </TableBody>
         </Table>
         </TableContainer>
     );
-    <br />
 }
