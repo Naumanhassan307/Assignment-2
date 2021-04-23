@@ -40,40 +40,53 @@ const StyledTableCell = withStyles((theme) => ({
     },
     });
 
-    export default function CustomizedTables({user}) {
-    const classes = useStyles();
+    export default function CustomizedTables({ user, setUser }) {
 
-    return (
-        <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-            <TableRow>
-                <StyledTableCell>User Name</StyledTableCell>
-                <StyledTableCell align="left">User ID</StyledTableCell>
-                <StyledTableCell align="left">User Role</StyledTableCell>
-                <StyledTableCell align="center">User E-mail</StyledTableCell>
-                <StyledTableCell align="center">Actions</StyledTableCell>
+        const delHandler = (id) => {
+            console.log("Id is ", id)
+            let newUser = user.filter((item)=>{
+                if(item.uId !== id){
+                    return item
+                }
+            })
+            console.log("New vala", newUser)
+            setUser([...newUser])
+        }
+        
 
-            </TableRow>
-            </TableHead>
-            <TableBody>
-            {user.map((item) => (
-                <StyledTableRow key={item.uName}>
-                <StyledTableCell component="th" scope="row">
-                    {item.uName}
-                </StyledTableCell>
-                <StyledTableCell align="left">{item.uId}</StyledTableCell>
-                <StyledTableCell align="left">{item.uRole}</StyledTableCell>
-                <StyledTableCell align="center">{item.uMail}</StyledTableCell>
-                <StyledTableCell align="center">
-                    <Button variant="contained">Update</Button> &nbsp;
-                    <Button variant="contained">Delete</Button>
-                </StyledTableCell>
-                
-                </StyledTableRow>
-            ))}
-            </TableBody>
-        </Table>
-        </TableContainer>
-    );
-}
+        const classes = useStyles();
+
+        return (
+            <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="customized table">
+                <TableHead>
+                <TableRow>
+                    <StyledTableCell>User Name</StyledTableCell>
+                    <StyledTableCell align="left">User ID</StyledTableCell>
+                    <StyledTableCell align="left">User Role</StyledTableCell>
+                    <StyledTableCell align="center">User E-mail</StyledTableCell>
+                    <StyledTableCell align="center">Actions</StyledTableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                {user.map((item) => (
+                    <StyledTableRow key={item.uName}>
+                    <StyledTableCell component="th" scope="row">
+                        {item.uName}
+                    </StyledTableCell>
+                    <StyledTableCell align="left">{item.uId}</StyledTableCell>
+                    <StyledTableCell align="left">{item.uRole}</StyledTableCell>
+                    <StyledTableCell align="center">{item.uMail}</StyledTableCell>
+                    <StyledTableCell align="center">
+                        <Button variant="contained">Update</Button> &nbsp;
+                        <Button variant="contained" onClick={()=>{delHandler(item.uId)}}>
+                        Delete
+                        </Button>
+                    </StyledTableCell>
+                    </StyledTableRow>
+                ))}
+                </TableBody>
+            </Table>
+            </TableContainer>
+        );
+    }

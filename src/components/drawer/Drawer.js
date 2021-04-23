@@ -76,7 +76,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-        const [user, setUser] = useState([])
+        const [user, setUser] = useState([
+            { uName: "A", uId: "1", uRole: "c", uMail: "d" },
+            { uName: "B", uId: "2", uRole: "c", uMail: "d" },
+            { uName: "C", uId: "3", uRole: "c", uMail: "d" },
+        ]);
 
 
 
@@ -190,7 +194,7 @@ const useStyles = makeStyles((theme) => ({
                         <AlertDialog setUser={setUser} user={user}/>
                     <br />
                     <br />
-                        <CustomizedTables user={user}/>
+                        <CustomizedTables user={user} setUser={setUser}/>
                     </div>
                     
                     <br />
