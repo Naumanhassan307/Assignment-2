@@ -1,5 +1,5 @@
 
-
+import {useState} from "react"
 
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -11,8 +11,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+import AlertDialogSlide from "../UpdateForm/Form"
 
 import Button from "@material-ui/core/Button";
+
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -53,10 +55,18 @@ const StyledTableCell = withStyles((theme) => ({
             setUser([...newUser])
         }
         
+        
+        const updateHandler = (item) => {
+            console.log("ITEM IS ", item)
+            
+
+            
+        }
 
         const classes = useStyles();
 
         return (
+            <>
             <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
                 <TableHead>
@@ -78,15 +88,20 @@ const StyledTableCell = withStyles((theme) => ({
                     <StyledTableCell align="left">{item.uRole}</StyledTableCell>
                     <StyledTableCell align="center">{item.uMail}</StyledTableCell>
                     <StyledTableCell align="center">
-                        <Button variant="contained">Update</Button> &nbsp;
+                        <Button variant="contained" onClick={()=>{updateHandler(item)}}  disabled ><AlertDialogSlide item={item} /></Button> &nbsp;
                         <Button variant="contained" onClick={()=>{delHandler(item.uId)}}>
                         Delete
                         </Button>
                     </StyledTableCell>
+                    
                     </StyledTableRow>
+
+                    
                 ))}
                 </TableBody>
             </Table>
             </TableContainer>
+                    
+                    </>
         );
     }
