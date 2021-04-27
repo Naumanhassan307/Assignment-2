@@ -4,10 +4,9 @@ import Name from "../Name/Name"
 import Dash from "../drawer/Dashboard"
 
 
-import CustomizedTables from "../Table/Table";
-import {useState} from "react"
-import AlertDialog from "../Form/inputButton"
 
+import {Link, BrowserRouter as Router} from "react-router-dom"
+import Routing from "../../Routing/Routing"
 
 
 import React from "react";
@@ -30,11 +29,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Role from "./roles";
 import User from "./User";
-import Per from "./permissino";
+import Permission from "./permissino"
 import News from "./news";
 import Page from "./pages";
 import Adv from "./advance";
 import Logout from "./logout";
+import Roles from "../navBar/Roles/Roles";
 
 
 const drawerWidth = 240;
@@ -76,11 +76,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-        const [user, setUser] = useState([
-            { uName: "A", uId: 1, uRole: "Teacher", uMail: "teacher@email.com" },
-            { uName: "B", uId: 2, uRole: "Clerck", uMail: "clerck@email.com" },
+        // const [user, setUser] = useState([
+        //     { uName: "A", uId: 1, uRole: "Teacher", uMail: "teacher@email.com" },
+        //     { uName: "B", uId: 2, uRole: "Clerck", uMail: "clerck@email.com" },
             
-        ]);
+        // ]);
 
 
 
@@ -103,11 +103,12 @@ const useStyles = makeStyles((theme) => ({
             <Divider />
                 <List>
                 <h3 className="tag">Administration</h3>
-                    {["Dashboard", "Users", "Roles", "Permissions","News", "pages", "Advanced"].map((text, index) => (
+
+                    {[<Link to="/dashboard" style={{color: "white"} }>Dashboard</Link> , <Link to="/user" style={{color: "white"}}>User</Link>, <Link to="/roles" style={{color: "white"}}>Roles</Link>, <Link to="/permission" style={{color: "white"}}>Roles</Link>,<Link to="/news" style={{color: "white"}}>News</Link>, <Link to="/pages" style={{color: "white"}}>Pages</Link>, <Link to="/advance" style={{color: "white"}}>Advanced</Link>].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
-                            {index  === 0 ? <Dash /> : index === 1 ? <User /> : index === 2 ? <Role /> : index === 3? <Per /> : index === 4 ? <News />
-                            : index === 5 ? <Page /> :  <Adv />
+                            {index  === 0 ? <Link to="/dashboard"><Dash /></Link> : index === 1 ? <Link to="/user"><User /></Link> : index === 2 ? <Link to="/roles"><Role /></Link> : index === 3? <Link to="/permission"><Permission /></Link> : index === 4 ?   <Link to="/news"><News /></Link>                                                    
+                            : index === 5 ? <Link to="/pages"><Page /></Link> :  <Link to="/advance"><Adv /></Link>
                             }
                             
                             </ListItemIcon>
@@ -150,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap>
-                    Users
+                    Web App
                     {/* <Log /> */}
                 </Typography>
 
@@ -190,15 +191,10 @@ const useStyles = makeStyles((theme) => ({
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <div className="chan-main">
-                    <div>
-                        <AlertDialog setUser={setUser} user={user}/>
-                    <br />
-                    <br />
-                        <CustomizedTables user={user} setUser={setUser}/>
-                    </div>
+
+                <Routing />
                     
-                    <br />
-                    <br />
+                    
                 </div>
                 
                 
